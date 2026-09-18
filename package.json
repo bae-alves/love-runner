@@ -1,23 +1,55 @@
 {
   "name": "love-runner",
   "displayName": "LÖVE Runner",
-  "description": "One-click button to package and run your LÖVE 2D project",
+  "description": "Run LÖVE 2D projects directly from VS Code with one click",
   "version": "0.1.0",
-  "publisher": "local",
+  "publisher": "bae-alves",
+  "author": "bae alves",
+  "license": "CC0-1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bae-alves/ext-love"
+  },
+  "homepage": "https://github.com/bae-alves/ext-love",
+  "bugs": {
+    "url": "https://github.com/bae-alves/ext-love/issues"
+  },
+  "funding": {
+    "type": "ko_fi",
+    "url": "https://ko-fi.com/baealves"
+  },
+  "sponsor": {
+    "url": "https://ko-fi.com/baealves"
+  },
+  "pix": "",
   "engines": {
     "vscode": "^1.80.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "keywords": [
+    "love2d",
+    "lua",
+    "game",
+    "gamedev",
+    "workflow"
+  ],
   "main": "./out/extension.js",
+  "icon": "media/icon.png",
+  "files": [
+    "out/**/*.js",
+    "out/**/*.js.map",
+    "media/**/*",
+    "README.md",
+    "LICENSE"
+  ],
   "contributes": {
     "keybindings": [
       {
         "command": "love.run",
-        "key": "f5",
-        "when": "editorLangId == 'lua'"
+        "key": "alt+f5",
+        "when": "editorLangId == 'lua' && config.love.enablePlayKey"
       }
     ],
     "configuration": {
@@ -27,6 +59,11 @@
           "type": "string",
           "default": "love",
           "description": "Path to the LÖVE executable (e.g. /usr/bin/love or C:\\Program Files\\LOVE\\love.exe)"
+        },
+        "love.enablePlayKey": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the default LÖVE play shortcut while editing Lua files. You can still remap it in VS Code Keyboard Shortcuts."
         }
       }
     },
@@ -44,8 +81,8 @@
       "editor/title": [
         {
           "command": "love.run",
-          "when": "resourceExtname == .lua",
-          "group": "navigation"
+          "when": "resourceExtname == '.lua'",
+          "group": "navigation@1"
         }
       ],
       "explorer/context": [
@@ -58,13 +95,18 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
+    "vscode:prepublish": "npm run lint && npm run compile",
+    "lint": "eslint src --ext ts",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./"
   },
   "devDependencies": {
-    "@types/vscode": "^1.80.0",
     "@types/node": "^20.0.0",
-    "typescript": "^5.4.0"
+    "@types/vscode": "^1.80.0",
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
+    "@typescript-eslint/parser": "^7.17.0",
+    "@vscode/vsce": "^4.0.0",
+    "eslint": "^8.57.0",
+    "typescript": "5.5.4"
   }
 }
