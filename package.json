@@ -1,0 +1,70 @@
+{
+  "name": "love-runner",
+  "displayName": "LÖVE Runner",
+  "description": "One-click button to package and run your LÖVE 2D project",
+  "version": "0.1.0",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "keybindings": [
+      {
+        "command": "love.run",
+        "key": "f5",
+        "when": "editorLangId == 'lua'"
+      }
+    ],
+    "configuration": {
+      "title": "LÖVE Runner",
+      "properties": {
+        "love.binaryPath": {
+          "type": "string",
+          "default": "love",
+          "description": "Path to the LÖVE executable (e.g. /usr/bin/love or C:\\Program Files\\LOVE\\love.exe)"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "love.run",
+        "title": "Run LÖVE Project",
+        "icon": {
+          "light": "media/play.svg",
+          "dark": "media/play.svg"
+        }
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "love.run",
+          "when": "resourceExtname == .lua",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "love.run",
+          "when": "explorerResourceIsFolder",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0"
+  }
+}
