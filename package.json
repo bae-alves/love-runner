@@ -1,8 +1,8 @@
 {
-  "name": "love-runner",
-  "displayName": "LÖVE Runner",
-  "description": "Run LÖVE 2D projects directly from VS Code with one click",
-  "version": "0.1.0",
+  "name": "love2d-runner",
+  "displayName": "LÖVE 2D Runner / LOVE 2D Runner",
+  "description": "Run LÖVE 2D / LOVE 2D projects directly from VS Code with one click",
+  "version": "0.1.2",
   "publisher": "bae-alves",
   "author": "bae alves",
   "license": "CC0-1.0",
@@ -30,10 +30,18 @@
   ],
   "keywords": [
     "love2d",
+    "Love2D",
+    "LÖVE",
+    "LOVE",
+    "löve",
+    "love",
     "lua",
     "game",
     "gamedev",
-    "workflow"
+    "workflow",
+    "love runner",
+    "runner",
+    "game dev"
   ],
   "main": "./out/extension.js",
   "icon": "media/icon.png",
