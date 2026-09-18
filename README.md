@@ -6,9 +6,11 @@ LÖVE Runner is a lightweight Lua game-development workflow for the LÖVE game e
 
 This extension packages your project into a `.love` file and launches it with the installed LÖVE executable, so you can iterate on game logic without leaving the editor.
 
+> **Note:** LÖVE Runner does not run standalone Lua scripts. It only runs LÖVE projects — the play button and `Alt+F5` appear while editing any `.lua` file, but running always packages and launches the whole workspace as a LÖVE project, and requires a `main.lua` at the project root.
+
 ## Features
 
-- One-click launch from the editor title bar or Explorer context menu
+- One-click launch from the editor title bar
 - Alt+F5 keybinding while editing Lua files
 - Validates that your project has a `main.lua` in the root
 - Creates a temporary build folder, packages the game, and cleans up afterward
@@ -16,7 +18,7 @@ This extension packages your project into a `.love` file and launches it with th
 
 ## Who it is for
 
-Use LÖVE Runner when you build 2D games in Lua with LÖVE and want a fast play-test loop inside Visual Studio Code. It works with standard LÖVE projects that have `main.lua` at the project root.
+Use LÖVE Runner when you build 2D games in Lua with LÖVE and want a fast play-test loop inside Visual Studio Code. It works with standard LÖVE projects that have `main.lua` at the project root — it is not a general-purpose Lua interpreter or script runner.
 
 ## Quick start
 

@@ -1,10 +1,12 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { exec } from 'child_process';
+import { exec, execFile } from 'child_process';
 import { promisify } from 'util';
+import { buildLoveInvocation } from './loveInvocation';
 
 const execAsync = promisify(exec);
+const execFileAsync = promisify(execFile);
 
 const BUILD_DIR = 'build';
 const ZIP_NAME = 'game.zip';
@@ -61,7 +63,10 @@ async function runLoveProject(projectRoot: string): Promise<void> {
         title: `LÖVE: running ${LOVE_NAME}...`,
         cancellable: false,
       },
-      () => execAsync(`"${loveBinary}" "${lovePath}"`, { cwd: buildDir })
+      () => {
+        const { command, args } = buildLoveInvocation(loveBinary, lovePath);
+        return execFileAsync(command, args, { cwd: buildDir });
+      }
     );
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);

@@ -1,8 +1,8 @@
 {
   "name": "love2d-runner",
   "displayName": "LÖVE 2D Runner / LOVE 2D Runner",
-  "description": "Run Lua and LÖVE 2D game projects directly from VS Code with one click",
-  "version": "0.1.3",
+  "description": "Run LÖVE 2D game projects directly from VS Code with one click",
+  "version": "0.1.7",
   "publisher": "bae-alves",
   "author": "bae alves",
   "license": "CC0-1.0",
@@ -21,7 +21,6 @@
   "sponsor": {
     "url": "https://ko-fi.com/baealves"
   },
-  "pix": "",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -48,13 +47,6 @@
   ],
   "main": "./out/extension.js",
   "icon": "media/icon.png",
-  "files": [
-    "out/**/*.js",
-    "out/**/*.js.map",
-    "media/**/*",
-    "README.md",
-    "LICENSE"
-  ],
   "contributes": {
     "keybindings": [
       {
@@ -95,13 +87,6 @@
           "when": "resourceExtname == '.lua'",
           "group": "navigation@1"
         }
-      ],
-      "explorer/context": [
-        {
-          "command": "love.run",
-          "when": "explorerResourceIsFolder",
-          "group": "navigation"
-        }
       ]
     }
   },
@@ -109,7 +94,9 @@
     "vscode:prepublish": "npm run lint && npm run compile",
     "lint": "eslint src --ext ts",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "watch": "tsc -watch -p ./",
+    "pretest": "tsc -p ./tsconfig.test.json",
+    "test": "node --test test-out/test"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
