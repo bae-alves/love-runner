@@ -64,10 +64,6 @@ If you enjoy this extension and want to support its development, you can donate 
 
 - https://ko-fi.com/baealves
 
-PIX donation:
-
-- 
-
 ## Development
 
 ```sh

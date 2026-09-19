@@ -2,7 +2,7 @@
   "name": "love2d-runner",
   "displayName": "LÖVE 2D Runner / LOVE 2D Runner",
   "description": "Run LÖVE 2D game projects directly from VS Code with one click",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "publisher": "bae-alves",
   "author": "bae alves",
   "license": "CC0-1.0",
